@@ -5,6 +5,7 @@ import 'package:flutterpractice/page/collapsing_tool_bar_page.dart';
 import 'package:flutterpractice/page/gridview_page.dart';
 import 'package:flutterpractice/page/layout_page.dart';
 import 'package:flutterpractice/page/step_page.dart';
+import 'package:flutterpractice/page/swipe_to_delete_page.dart';
 import 'package:flutterpractice/page/tab_page.dart';
 import 'package:flutterpractice/page/video_page.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         "Video": (context) => new VideoPage(),
         "CollapsingToolBar": (context) => new CollapsingToolBarPage(),
         "Calculator Practice": (context) => new CalculatorPracticePage(),
+        "Swipe To Delete Practice": (context) => new SwipeToDeletePage(),
       },
     );
   }
@@ -41,7 +43,6 @@ class _HomePartPageState extends State<HomePartPage> {
   @override
   void initState() {
     super.initState();
-
     _demoList.add("Bottom Navigation Bar");
     _demoList.add("GridView");
     _demoList.add("Tab");
@@ -50,6 +51,7 @@ class _HomePartPageState extends State<HomePartPage> {
     _demoList.add("Video");
     _demoList.add("CollapsingToolBar");
     _demoList.add("Calculator Practice");
+    _demoList.add("Swipe To Delete Practice");
   }
 
   @override

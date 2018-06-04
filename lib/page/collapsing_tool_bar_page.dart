@@ -9,8 +9,23 @@ class _CollapsingToolBarPageState extends State<CollapsingToolBarPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("CollapsingToolBar"),
+      body: new CustomScrollView(
+        slivers: <Widget>[
+          new SliverAppBar(
+            expandedHeight: 150.0,
+            pinned: false,
+            floating: false,
+            flexibleSpace: new FlexibleSpaceBar(
+              title: new Text("Title"),
+            ),
+          ),
+          new SliverList(
+              delegate: new SliverChildBuilderDelegate((context, index) {
+            return new ListTile(
+              title: new Text("List item $index"),
+            );
+          }))
+        ],
       ),
     );
   }
