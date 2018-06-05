@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/page/bottom_navigation_bar_page.dart';
+import 'package:flutterpractice/page/bottom_sheet_page.dart';
 import 'package:flutterpractice/page/calculator_practice_page.dart';
 import 'package:flutterpractice/page/collapsing_tool_bar_page.dart';
 import 'package:flutterpractice/page/gridview_page.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         "Layout": (context) => new LayoutPage(),
         "Video": (context) => new VideoPage(),
         "CollapsingToolBar": (context) => new CollapsingToolBarPage(),
+        "BottomSheet": (context) => new BottomSheetPage(),
         "Calculator Practice": (context) => new CalculatorPracticePage(),
         "Swipe To Delete Practice": (context) => new SwipeToDeletePage(),
       },
@@ -50,6 +52,7 @@ class _HomePartPageState extends State<HomePartPage> {
     _demoList.add("Layout");
     _demoList.add("Video");
     _demoList.add("CollapsingToolBar");
+    _demoList.add("BottomSheet");
     _demoList.add("Calculator Practice");
     _demoList.add("Swipe To Delete Practice");
   }
