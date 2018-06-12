@@ -23,10 +23,21 @@ class _EggTimerPracticePageState extends State<EggTimerPracticePage> {
         child: new Center(
             child: new Column(
           children: <Widget>[
+            new Expanded(
+              child: new Container(),
+              flex: 1,
+            ),
             new TimeDisplay(),
             new TimeDial(),
-            new Expanded(child: new Container()),
+            new Expanded(
+              child: new Container(),
+              flex: 2,
+            ),
             new TimeControl(),
+            new Expanded(
+              child: new Container(),
+              flex: 1,
+            )
           ],
         )),
       ),
@@ -34,10 +45,26 @@ class _EggTimerPracticePageState extends State<EggTimerPracticePage> {
   }
 }
 
-class TimeDial extends StatelessWidget {
-  const TimeDial({
-    Key key,
-  }) : super(key: key);
+class TimeDial extends StatefulWidget {
+  final Duration currentTime;
+  final Duration maxTime;
+  final int tickPerSection;
+
+  TimeDial(
+      {this.currentTime = const Duration(minutes: 0),
+      this.maxTime = const Duration(minutes: 35),
+      this.tickPerSection = 5});
+
+  @override
+  TimeDialState createState() {
+    return new TimeDialState();
+  }
+}
+
+class TimeDialState extends State<TimeDial> {
+  rotationPercent() {
+    return widget.currentTime.inSeconds / widget.maxTime.inSeconds;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +95,19 @@ class TimeDial extends StatelessWidget {
                 children: <Widget>[
                   new Padding(
                     padding: const EdgeInsets.all(65.0),
-                    child: new TimerKnob(),
+                    child: new TimerKnob(
+                      rotationPercent: rotationPercent(),
+                    ),
                   ),
                   new Container(
                     padding: const EdgeInsets.all(55.0),
                     width: double.infinity,
                     height: double.infinity,
                     child: new CustomPaint(
-                      painter: new TimeTicker(),
+                      painter: new TimeTicker(
+                        tickCount: widget.maxTime.inMinutes,
+                        tickPerSection: widget.tickPerSection,
+                      ),
                     ),
                   ),
                 ],
@@ -167,21 +199,31 @@ class TimeTicker extends CustomPainter {
   }
 }
 
-class TimerKnob extends StatelessWidget {
-  const TimerKnob({
-    Key key,
-  }) : super(key: key);
+class TimerKnob extends StatefulWidget {
+  final rotationPercent;
 
+  TimerKnob({this.rotationPercent});
+
+  @override
+  TimerKnobState createState() {
+    return new TimerKnobState();
+  }
+}
+
+class TimerKnobState extends State<TimerKnob> {
   @override
   Widget build(BuildContext context) {
     return new Stack(
       children: <Widget>[
-        new Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: new CustomPaint(
-            painter: new ArrowPainter(),
+        new Transform(
+          child: new Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: new CustomPaint(
+              painter: new ArrowPainter(),
+            ),
           ),
+          transform: new Matrix4.rotationZ(2 * pi * 0.25),
         ),
         new AspectRatio(
           aspectRatio: 1.0,

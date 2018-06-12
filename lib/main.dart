@@ -4,6 +4,7 @@ import 'package:flutterpractice/page/bottom_sheet_page.dart';
 import 'package:flutterpractice/page/calculator_practice_page.dart';
 import 'package:flutterpractice/page/collapsing_tool_bar_page.dart';
 import 'package:flutterpractice/page/egg_timer_practice_page.dart';
+import 'package:flutterpractice/page/feature_discovery_practice_page.dart';
 import 'package:flutterpractice/page/gridview_page.dart';
 import 'package:flutterpractice/page/layout_page.dart';
 import 'package:flutterpractice/page/material_splash_screen_practice_page.dart';
@@ -34,6 +35,8 @@ class MyApp extends StatelessWidget {
         "Material Splash Screen Practice": (context) =>
             new MaterialSplashScreenPracticePage(),
         "Egg Timer Practice": (context) => new EggTimerPracticePage(),
+        "Feature Discovery Practice": (context) =>
+            new FeatureDiscoveryPracticePage(),
       },
     );
   }
@@ -62,6 +65,7 @@ class _HomePartPageState extends State<HomePartPage> {
     _demoList.add("Swipe To Delete Practice");
     _demoList.add("Material Splash Screen Practice");
     _demoList.add("Egg Timer Practice");
+    _demoList.add("Feature Discovery Practice");
   }
 
   @override
